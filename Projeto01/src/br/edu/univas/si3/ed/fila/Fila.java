@@ -18,6 +18,28 @@ public class Fila {
 		tamanho++;
 	}
 	
+	public Pessoa remover() {
+		Pessoa removido;
+		removido = inicio;
+		if(!estaVazia()) {
+			inicio = inicio.proximo; //move o início para o 2o
+			tamanho--;
+		} else {
+			ultimo = null;
+		}
+		return removido;
+	}
+	
+	public void imprimir() {
+		Pessoa pessoaDaVez = inicio;
+		
+		while(pessoaDaVez != null) {
+			System.out.print(pessoaDaVez.nome + " - ");
+			pessoaDaVez = pessoaDaVez.proximo;
+		}
+		System.out.println();
+	}
+	
 	public int getTamanho() {
 		return tamanho;
 	}
