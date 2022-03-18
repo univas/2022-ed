@@ -4,11 +4,13 @@ import br.edu.univas.si3.ed.fila.dados.Pessoa;
 
 public class Fila {
 
-	private Pessoa inicio = null;
-	private Pessoa ultimo = null;
+	private No inicio = null;
+	private No ultimo = null;
 	private int tamanho = 0;
 	
-	public void inserir(Pessoa novo) {
+	public void inserir(Pessoa novaPessoa) {
+		No novo = new No();
+		novo.pessoa = novaPessoa;
 		if(estaVazia()) {
 			inicio = novo;
 		} else {
@@ -19,7 +21,7 @@ public class Fila {
 	}
 	
 	public Pessoa remover() {
-		Pessoa removido;
+		No removido;
 		removido = inicio;
 		if(!estaVazia()) {
 			inicio = inicio.proximo; //move o início para o 2o
@@ -27,15 +29,19 @@ public class Fila {
 		} else {
 			ultimo = null;
 		}
-		return removido;
+		if(removido != null) {
+			return removido.pessoa;
+		} else {
+			return null;
+		}
 	}
 	
 	public void imprimir() {
-		Pessoa pessoaDaVez = inicio;
+		No noDaVez = inicio;
 		
-		while(pessoaDaVez != null) {
-			System.out.print(pessoaDaVez.nome + " - ");
-			pessoaDaVez = pessoaDaVez.proximo;
+		while(noDaVez != null) {
+			System.out.print(noDaVez.pessoa.nome + " - ");
+			noDaVez = noDaVez.proximo;
 		}
 		System.out.println();
 	}
