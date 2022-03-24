@@ -8,6 +8,18 @@ public class Fila {
 	private No ultimo = null;
 	private int tamanho = 0;
 	
+	public int comprimento() {
+		int comprimento = 0;
+		No atual = inicio;
+
+		//navega na fila do início até o fim, contando cada elemento
+		while(atual != null) {
+			comprimento++;
+			atual = atual.proximo;
+		}
+		return comprimento;
+	}
+	
 	public void inserir(Pessoa novaPessoa) {
 		No novo = new No();
 		novo.pessoa = novaPessoa;
