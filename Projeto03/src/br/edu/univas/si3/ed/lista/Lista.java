@@ -1,6 +1,5 @@
 package br.edu.univas.si3.ed.lista;
 
-import br.edu.univas.si3.ed.fila.No;
 import br.edu.univas.si3.ed.lista.dados.Entidade;
 
 public class Lista {
@@ -65,24 +64,67 @@ public class Lista {
 		return null;
 	}
 	
-	public Entidade remover(String nome) {
+	public Entidade remover(String nomeProcurado) {
 		//escrever os comentários com os passos da execução
 		
+		//caso 1 - lista vazia
+		if(estaVazia()) {
+			return null;
+		}
+		
+		//Procurar o nó desejado e o anterior junto
+			//estratégia: ao navegar, antes de ir para o próximo, guardar o anterior
+		No noDaVez = inicio;
+		No anterior = null;
+		
+		//usar o mesmo loop do buscarPorNome
+		while(noDaVez != null) {//enquanto o nó da vez não for null
+			//verifica se o nó da vez tem o nome procurado
+			if(noDaVez.entidade.nome.equals(nomeProcurado)) {
+				break; //achou
+			}
+			//guardar o anterior antes de ir para o próximo
+			anterior = noDaVez;
+			//avança o noDaVez para o próximo nó
+			noDaVez = noDaVez.proximo;
+		}
+		
+		//caso 2 - não achou o nome na lista
+		if(noDaVez == null) {
+			return null;
+		}
+		
+		//daqui para baixo, achou
+		//caso 3 - achou o nome na lista
+		
+		
+		//caso 6 - o próximo do atual é null
+
 		//cenário 1 - remover do início
-		No removido = inicio;
-		//inicio = inicio.proximo;
-		
-		//cenario 2 - remover o último
-		//No anterior = ???;
-		//No removido = ultimo;
-		//ultimo = anteior;
-		
-		//cenário 3 - remover do meio
-		//No anterior = ???;
-		//No removido = noDaVez;
-		//anterior.proximo = removido.proximo;
-		
-		return removido;
+		if(noDaVez == inicio) { //caso 5 - o anterior é null
+			//caso 4 - só tem 1 elemento na lista
+			if(inicio == ultimo) {
+				inicio = null;
+				ultimo = null;
+			} else {
+				inicio = inicio.proximo;
+			}
+		} else 
+			//cenario 2 - remover o último
+			if(noDaVez == ultimo) {
+				
+				if(inicio == ultimo) {
+					inicio = null;
+					ultimo = null;
+				} else {
+					ultimo = anterior;
+					anterior.proximo = null;
+				}
+		} else {
+			//cenário 3 - remover do meio
+			anterior.proximo = noDaVez.proximo;
+		}		
+		return noDaVez.entidade;
 	}
 	
 	private boolean estaVazia() {
