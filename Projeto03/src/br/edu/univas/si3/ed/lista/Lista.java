@@ -58,12 +58,22 @@ public class Lista {
 		//retorna null (porque não achou o nome em nenhum nó)
 		return null;
 	}
-	
+
 	public Entidade buscarNaPosicao(int posicao) {
 		//escrever os comentários com os passos da execução
+		No noDaVez = inicio;
+		int count = 0;
+		while(noDaVez != null) {
+			
+			if(count == posicao) {
+				return noDaVez.entidade;
+			}
+			noDaVez = noDaVez.proximo;
+			count++;
+		}
 		return null;
 	}
-	
+		
 	public Entidade remover(String nomeProcurado) {
 		//escrever os comentários com os passos da execução
 		
