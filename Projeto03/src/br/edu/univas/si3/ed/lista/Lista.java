@@ -140,4 +140,33 @@ public class Lista {
 	private boolean estaVazia() {
 		return inicio == null;
 	}
+	
+	public void trocarElemento(Lista lista, int pos1, int pos2) {
+		//TODO: implementar
+	}
+	
+	public Lista concatenar(Lista listaA, Lista listaB) {
+		if(listaA.estaVazia()) {
+			listaA.inicio = listaB.inicio;
+		} else {
+			listaA.ultimo.proximo = listaB.inicio;
+		}
+		listaA.ultimo = listaB.ultimo;
+		return listaA;
+	}
+	
+	public Lista recortar(Lista lista, int pos1, int pos2) {
+		Lista novaLista = new Lista();
+		No noDaVez = lista.inicio;
+		int count = 0;
+		while(noDaVez != null) {
+			
+			if(count >= pos1 && count <= pos2) {
+				novaLista.inserir(noDaVez.entidade);
+			}
+			noDaVez = noDaVez.proximo;
+			count++;
+		}
+		return novaLista;
+	}
 }
