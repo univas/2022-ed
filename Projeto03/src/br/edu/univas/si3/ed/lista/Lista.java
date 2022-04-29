@@ -169,4 +169,8 @@ public class Lista {
 		}
 		return novaLista;
 	}
+	
+	public ListaIterator getIterator() {
+		return new ListaIterator(inicio);
+	}
 }
