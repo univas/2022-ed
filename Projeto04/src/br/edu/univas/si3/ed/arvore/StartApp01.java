@@ -12,14 +12,25 @@ public class StartApp01 {
 		ArvoreBinariaV1 arvore = new ArvoreBinariaV1();
 		System.out.println("Teste 01");
 		arvore.imprimir();
-
+		
+		Entidade entidadeD = new Entidade("D");
+		No noD = arvore.criarNovoNo(entidadeD);
+		
 		//Cria o nó B
 		Entidade entidadeB = new Entidade("B");
-		No noB = arvore.criarNovoNo(entidadeB);
+		//No noB = arvore.criarNovoNo(entidadeB);
+		No noB = arvore.criarSubArvore(entidadeB, null, noD);
+
+		Entidade entidadeE = new Entidade("E");
+		No noE = arvore.criarNovoNo(entidadeE);
+		Entidade entidadeF = new Entidade("F");
+		No noF = arvore.criarNovoNo(entidadeF);
 		
-		//Cria o nó C
 		Entidade entidadeC = new Entidade("C");
-		No noC = arvore.criarNovoNo(entidadeC);
+
+		//Cria o nó C
+		No noC = arvore.criarSubArvore(entidadeC, noE, noF);
+		//No noC = arvore.criarNovoNo(entidadeC);
 		
 		//Cria o nó A
 		Entidade entidadeA = new Entidade("A");
