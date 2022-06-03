@@ -1,6 +1,8 @@
 package br.edu.univas.si3.ed.arvore;
 
 import br.edu.univas.si3.ed.arvore.model.ArvoreBinariaBusca;
+import br.edu.univas.si3.ed.arvore.model.ComparadorDeIdade;
+import br.edu.univas.si3.ed.arvore.model.ComparadorDeNomes;
 import br.edu.univas.si3.ed.arvore.model.Entidade;
 
 public class StartApp02 {
@@ -23,6 +25,18 @@ public class StartApp02 {
 		arvoreBinBusca.inserir(e5);
 		
 		arvoreBinBusca.imprimir();
+		
+		ComparadorDeIdade comparadorIdade = new ComparadorDeIdade();
+		
+		Entidade procurado = new Entidade();
+		procurado.idade = 4;
+		Entidade encontrado = arvoreBinBusca.buscar(procurado, comparadorIdade);
+		System.out.println(encontrado);
+		
+		ComparadorDeNomes comparadorNome = new ComparadorDeNomes();
+		procurado.nome = "E1";
+		encontrado = arvoreBinBusca.buscar(procurado, comparadorNome);
+		System.out.println(encontrado);
 	}
 
 }

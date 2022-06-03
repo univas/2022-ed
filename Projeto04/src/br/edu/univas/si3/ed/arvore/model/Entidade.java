@@ -5,6 +5,9 @@ public class Entidade {
 	public String nome;
 	public int idade;
 	
+	public Entidade() {
+	}
+	
 	public Entidade(String nome) {
 		this.nome = nome;
 	}
@@ -13,4 +16,10 @@ public class Entidade {
 		this.nome = nome;
 		this.idade = idade;
 	}
+
+	@Override
+	public String toString() {
+		return "Entidade [nome=" + nome + ", idade=" + idade + "]";
+	}
+	
 }
